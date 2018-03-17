@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: #888;
+	font-family: 'Swanky and Moo Moo', cursive;
+	height: 100%;
+	margin: 0;
+	-webkit-font-smoothing: antialiased;
+}
+h1 {
+	text-align: center;
+	text-decoration: underline;
+	font-size: 50px;
+	background-color: #EEEEEE;
+}
+h2 {
+	margin: 10px;
+}
+label{
+	font-family: sans-serif;
+}
+button {
+	background-color: steelblue;
+	padding: 10px;
+	color: white;
+	box-shadow: 2px 2px 2px black;
+	border-radius: 5px;
+}
+
+button:hover {
+	background-color: #FF6133;
+	transition-duration: 300ms;
+	outline: none;
+}
+
+table {
+	border-collapse: collapse;
+	padding: 0px;
+}
+
+.wall-log-in table {
+	margin-left: 20px;
+}
+
+.database_table table {
+	border-collapse: collapse;
+	position: relative;
+	width: 100%;
+	text-align: center;
+	font-family: sans-serif;
+}
+thead{
+	position: relative;
+	top: 0
+}
+.thead--is-fixed {
+	display: table;
+	position: fixed;
+	top: 0
+}
+.database_table th {
+	background: linear-gradient(#6585ed,#349cff), #6585ed;
+	border: 1px solid #6585ed;
+	box-sizing: border-box;
+	color: #fff;
+	padding: 5px 5px;
+}
+.database_table td {
+	border: 1px solid #dedede;
+	box-sizing: border-box;
+	padding: 5px 5px;
+}
+
+.button-bx {
+	/*padding: 0;*/
+}
+
+.wall {
+	margin-top: 20px;
+	text-align: center;
+}
+
+.wall button {
+	vertical-align: top;
+	padding: 15px;
+}
+.wall-posts p {
+	margin: 20px auto;
+	width: 500px;
+	border: 2px dashed grey;
+	padding: 5px;
+	text-align: center;
+	font-family: 'Raleway', sans-serif;
+}

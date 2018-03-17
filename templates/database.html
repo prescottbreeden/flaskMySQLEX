@@ -2,39 +2,56 @@
 <html>
 <head>
   <title>Friends</title>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
-	<h3><a href="/">Click here to return to home page</a></h3>
+	<h1>Welcome to the amazing and revolutionary 'Friend-Book'!</h1>
+	<div class="add_a_friend">
+	<h2>Add a Friend</h2>
+		<form action='/friends' method='POST'>
+			<label for="first_name">First Name:<input type="text" placeholder="first name" name="first_name" id="first_name"></label>
+			<label for="last_name">Last Name:<input type="text" placeholder="last name" name="last_name" id="last_name"></label>
+			<label for="occupation">Occupation:<input type="text" placeholder="occupation" name="occupation" id="occupation"></label>
+			<button type="submit">Add</button>
+		</form>	
+	</div>
+	<div class="update_a_friend">
 	<h2>Update a Friend</h2>
 	<form action='/update' method='POST'>
-		<label for="first_name">First Name:<input type="text" name="first_name" id="first_name" value="{{session['first_name']}}"></label>
-		<label for="last_name">Last Name:<input type="text" name="last_name" id="last_name" value="{{session['last_name']}}"></label>
-		<label for="occupation">Occupation:<input type="text" name="occupation" id="occupation" value="{{session['occupation']}}"></label>
+		<label for="first_name">First Name:<input type="text" placeholder="click 'edit' below" name="first_name" id="first_name" value="{{session['first_name']}}"></label>
+		<label for="last_name">Last Name:<input type="text" placeholder="click 'edit' below" name="last_name" id="last_name" value="{{session['last_name']}}"></label>
+		<label for="occupation">Occupation:<input type="text" placeholder="click 'edit' below" name="occupation" id="occupation" value="{{session['occupation']}}"></label>
 		<input type="hidden" name="id" value="{{session['friend_id']}}">
-		<input type="submit" value="Add">
-	</form>
-	<h2>Database of Friends</h2>
-	<table>
-		<thead>
-			<th>ID</th>
-			<th>First Name</th>
-			<th>Last Name</th>
-			<th>Occupation</th>
-			<th>Created at</th>
-			<th>Updated at</th>
-			<th>Edit Info</th>
-		</thead>
+		<button type="submit">Update Friend!</button>
+	</form>	
+	</div>
+	<div class="database_table">
+		<h2>Database of Friends</h2>
+		<table>
+			<thead>
+				<th></th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Occupation</th>
+				<th>Created at</th>
+				<th>Updated at</th>
+				<th class="button-bx"></th>
+				<th class="button-bx"></th>
+			</thead>
 {% for friend in all_friends: %}
-	<tr>
-		<td>{{ friend['id'] }}</td>
-		<td>{{ friend['first_name'] }}</td>
-		<td>{{ friend['last_name'] }}</td>
-		<td>{{ friend['occupation'] }}</td>
-		<td>{{ friend['created_at'] }}</td>
-		<td>{{ friend['updated_at'] }}</td>
-		<td><form action="/update_friend/{{friend['id']}}" method='POST'><input type="submit">Edit</input></form></td>
-	</tr>
+		<tr>
+			<td>{{ friend['id'] }}</td>
+			<td>{{ friend['first_name'] }}</td>
+			<td>{{ friend['last_name'] }}</td>
+			<td>{{ friend['occupation'] }}</td>
+			<td>{{ friend['created_at'] }}</td>
+			<td>{{ friend['updated_at'] }}</td>
+			<td><form action="/update_friend/{{friend['id']}}" method='POST'><button type="submit">Edit Info</button></form></td>
+			<td><form action="/remove_friend/{{friend['id']}}" method='POST'><button type="submit">Remove Friend</button></form></td>
+		</tr>
 {% endfor %}
-	</table>
+		</table>
+	</div>
+	
 </body>
 </html>

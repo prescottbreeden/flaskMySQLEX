@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css?family=Swanky+and+Moo+Moo');
+@import url('https://fonts.googleapis.com/css?family=Raleway');
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background color: #DDDDDD;
+	text-align: center;
+	font-family: Raleway;
+}
+h1 {
+	text-align: center;
+	margin: 20px 0;
+}
+.nav {
+	background-color: steelblue;
+	color: white;
+	display: flex;
+	justify-content: space-around;
+	flex-basis: 25%;
+	flex-wrap: wrap;
+}
+.nav a {
+	text-decoration: none;
+	color: white;
+	padding: 10px;
+	line-height: 30px;
+}
+.error {
+	text-align: center;
+}
+.registration_form {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	text-align: right;
+}
+.register {
+	vertical-align: top;
+	margin: 50px auto;
+}
+.login {
+	vertical-align: top;
+}
+
+.guest {
+	
+}
+
+.logged_in {
+	visibility: hidden;
+}
+
+.fade_in {
+	transition: 1s;
+	animation-name: fade-in;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-fill-mode: forwards; 
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

@@ -1,29 +1,104 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Friends</title>
+	<title>Welcome to 'Friend-Book'!</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
-	<h1>Welcome to the amazing and revolutionary 'Friend-Book'!</h1>
-	<h2>Add a Friend</h2>
-	<form action='/friends' method='POST'>
-		<label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
-		<label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
-		<label for="occupation">Occupation:<input type="text" name="occupation" id="occupation"></label>
-		<input type="submit" value="Add">
-	</form>
-	<h2>These are all my friends!</h2>
-	<h3><a href="/database">Click here to update a friend's information</a></h3>
+	<h1>Welcome to the amazing and totally original 'Friend-Book'!</h1>	
+	<div class="nav">
+		<a href="/">Home</a>
+		<a href="/wall">Visit the Wall</a>
+		<a href="/database">Sample Database</a>
+		<form action='/login' method='POST'>
+			<table>
+				<tr>
+					<td><label for="email">Email:</label></td>
+					<td><input type="text" placeholder='email' name="email" value="{{session['email']}}"></td>
+					<td><input type="submit" value="Login"></td>
+				</tr>
+				<tr>
+					<td><label for="password">Password:</label></td>
+					<td><input type="password" placeholder='password' name="password"></form></td>
+					<form action="/logout" method="POST">
+					<td><input type="submit" value="Logout"></form></td>
+				</tr>
+			</table>
+	</div>
+	<div class="register">
+		<div class="error">
+		{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul class='flashes'>
+		{% for message in messages %}
+			<li>{{message}}</li>
+		{% endfor %}
+			</ul>
+		{% endif %}
+		{% endwith %}
 
-{% for friend in all_friends: %}
-
-	<p>ID: {{ friend['id'] }}</p>
-	<p>First Name: {{ friend['first_name'] }}</p>
-	<p>Last Name: {{ friend['last_name'] }}</p>
-	<p>Occupation: {{ friend['occupation'] }}</p>
-	<hr>
-
-{% endfor %}
+		</div>
+		<h2 class="{{ session['status'] }}">Please Register</h2>
+		<div class="registration_form {{ session['status'] }}">
+	    <form action="/register" method="post">
+	        <table>
+	            <tr>
+	                <td>
+	                    <!-- first name_input -->
+	                    <label for="first_name">First Name:</label>
+	                </td>
+	                <td>
+	                    <input type="text" placeholder="first name" name="first_name" required>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <!-- last name_input -->
+	                    <label for="last_name">Last Name:</label>
+	                </td>
+	                <td>
+	                    <input type="text" placeholder="last name" name="last_name" required>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <!-- Email: -->
+	                    <label for="email">Email:</label>
+	                </td>
+	                <td>
+	                    <input type="text" placeholder="email"  name="email" required>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <!-- Password_input -->
+	                    <label for="password">Password:</label>
+	                </td>
+	                <td>
+	                    <input type="password" placeholder="password" name="password" required>
+	                </td>
+	            </tr>
+	            <tr>
+	                <td>
+	                    <!-- Password Confirmation -->
+	                    <label for="cpassword">PW Confirm:</label>
+	                </td>
+	                <td>
+	                    <input type="password" placeholder="confirm password" name="cpassword" required>
+	                </td>
+	            </tr>
+	            <tr>
+	            	<td></td>
+	            	<td><input type="submit" value="Sign Up!"></td>
+	            </tr>
+	        </table>
+	    </form> 
+		</div>
+		{% if 'user_id' in session %}
+		<h4 class='fade_in slide_up fade_out'> {{ session['welcome'] }} </h4>
+		{% endif %}
+	</div>
+	<p class="{{ session['status'] }}">Fill out this form to sign up for 'Friend-Book!'</p>
 
 </body>
 </html>

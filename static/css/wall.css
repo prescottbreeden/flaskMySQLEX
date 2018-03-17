@@ -1,0 +1,58 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+h5 + h6 {
+	font-weight: normal;
+}
+body {
+	background color: #DDDDDD;
+}
+h1 {
+	text-align: center;
+	margin: 20px 0;
+}
+.nav {
+	background-color: steelblue;
+	color: white;
+	display: flex;
+	justify-content: space-around;
+}
+.nav a {
+	text-decoration: none;
+	color: white;
+	padding: 10px;
+	line-height: 30px;
+}
+.error {
+	text-align: center;
+}
+/*.header {
+	display: flex;
+	justify-content: space-around;
+	margin: 0 auto;
+	width: 100%;
+}*/
+.wall {
+	display: flex;
+	flex-direction: column;
+}
+.wall form {
+	text-align: center;
+}
+/*.wall p{
+	width: 75%;
+	margin: 20px;
+}*/
+.posts {
+	margin: 10px;
+}
+.post{
+	border: 2px dashed black;
+	padding: 5px;
+}
+.log-in {
+/*	display: inline-block;*/
+	vertical-align: top;
+	margin: 50px 0;
+}

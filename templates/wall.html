@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>The Wall</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/wall.css') }}">
+</head>
+<body>
+	<h1>Welcome to the amazing and totally original 'Friend-Book'!</h1>		
+	<div class="nav">
+		<a href="/">Home</a>
+		<a href="/wall">Visit the Wall</a>
+		<a href="/database">Sample Database</a>
+		<form action='/login' method='POST'>
+			<table>
+				<tr>
+					<td><label for="email">Email:</label></td>
+					<td><input type="text" placeholder:='email' name="email"></td>
+					<td><input type="submit" value="Login"></td>
+				</tr>
+				<tr>
+					<td><label for="password">Password:</label></td>
+					<td><input type="password" placeholder:='password' name="password""></form></td>
+					<form action="/logout" method="POST">
+					<td><input type="submit" value="Logout"></form></td>
+				</tr>
+			</table>
+	</div>
+	<div class="content">
+		<div class="green">
+			<p>You're logged in as '{{session['user_email']}}'.</p>
+		</div>
+		<h3>Post a message</h3>
+		<form action='/post' method='POST'>
+			<input type="hidden" name="type" value="post">
+			<textarea rows='5' cols='50' name="text"></textarea>
+			<input type="submit" value="Post a message">
+		</form>
+		<div class="posts">
+		{% for post in all_posts: %}
+			<div class="post">
+				<h5>{{post.content}}</h5>
+				<h6 class="info">{{post.user_name}} - {{post.time}}</h6>
+			</div>
+			<div class="comments">
+				{% for comment in all_comments: %}
+					{% if post.id == comment.parent_id %}
+				<div class="message">
+					<h5>{{comment.user_name}} - {{comment.time}}</h5>
+					<p>{{comment.content}}</p>
+				</div>
+					{% endif %}
+				{% endfor %}
+				<form action='/post' method='POST'>
+				<input type="hidden" name="type" value="comment">
+				<input type="hidden" name="parent" value="{{post.id}}">
+				<textarea name="text" rows="2" cols="40"></textarea>
+				<input type="submit" value="Post a comment">
+				</form>
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+</body>
+</html>
